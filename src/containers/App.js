@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {dataService} from './data.service';
+import {dataService} from '../components/services/data.service';
 
 export const service = React.createContext();
 
