@@ -1,8 +1,6 @@
 import axiosCustom from '../../config/axios';
 
-export const dataService = (props) => {
+export const dataService = () => {
   return axiosCustom.get('/posts')
-    .then(posts => {
-      return posts.data;
-    });
+    .then(posts => posts.data);
 };

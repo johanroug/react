@@ -1,9 +1,11 @@
 import axios from 'axios';
 
-// ! points to a data folder with mock JSON data when in development mode
 const isProduction = process.env.NODE_ENV === 'production';
+
+// ! points to a data folder with mock JSON data when in development mode
 const endpoint = isProduction ? 'https://jsonplaceholder.typicode.com' : 'data';
 
+// Global axios setup
 const instance = axios.create({
   baseURL: endpoint,
   responseType: 'json',
