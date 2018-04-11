@@ -20,6 +20,7 @@ if (!isProduction) {
   });
 }
 
+// handle API calls globally
 instance.interceptors.response.use(response => {
   console.log(response, 'oh cool');
   return response;
