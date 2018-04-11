@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import {dataService} from '../components/services/data.service';
+import Child from '../components/Child';
 
-export const service = React.createContext();
+export const AuthContext = React.createContext();
 
 class App extends Component {
   state = {
@@ -17,10 +18,16 @@ class App extends Component {
   }
 
   render () {
+    // const posts = this.state.posts.map(items => <li key={items.id}>{items.title}</li>);
     return (
-      <ul className='App'>
-        {this.state.posts.map(items => <li key={items.id}>{items.title}</li>)}
-      </ul>
+      <div>
+        {/* <ul className='App'>
+          {posts}
+        </ul> */}
+        <AuthContext.Provider value={this.state}>
+          <Child />
+        </AuthContext.Provider>
+      </div>
     );
   }
 }
