@@ -191,23 +191,25 @@ module.exports = {
               }
             ]
           },
-          // {
-          //   test: /\.scss$/,
-          //   use: [
-          //     require.resolve('style-loader'),
-          //     {
-          //       loader: require.resolve('css-loader'),
-          //       options: {
-          //         importLoaders: 1,
-          //         modules: true,
-          //         localIdentName: '[name]__[local]__[hash:base64:5]'
-          //       }
-          //     },
-          //     'sass-loader'
-          //   ]
-          // },
           {
             test: /\.scss$/,
+            exclude: path.resolve('src/main.scss'),
+            use: [
+              require.resolve('style-loader'),
+              {
+                loader: require.resolve('css-loader'),
+                options: {
+                  importLoaders: 1,
+                  modules: true,
+                  localIdentName: '[name]__[local]__[hash:base64:5]'
+                }
+              },
+              'sass-loader'
+            ]
+          },
+          {
+            test: /\.scss/,
+            include: path.resolve('src/main.scss'),
             use: ExtractTextPlugin.extract({
               fallback: 'style-loader',
               use: [
