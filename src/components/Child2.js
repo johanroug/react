@@ -1,9 +1,10 @@
 import React from 'react';
 import {AuthContext} from '../containers/App';
+import style from './Child2.css';
 
 const child2 = (props) => {
   return (
-    <div>
+    <div className={style.Child2}>
       Child2
       <br />
       <ul>

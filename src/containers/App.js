@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import {dataService} from '../components/services/data.service';
 import Child from '../components/Child';
 
@@ -19,7 +19,7 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className={classes.App}>
         <AuthContext.Provider value={this.state}>
           <Child />
         </AuthContext.Provider>
