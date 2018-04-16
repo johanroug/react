@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.scss';
-import {dataService} from '../components/services/data.service';
-import Child from '../components/Child';
+import {dataService} from '../services/data.service';
+import Child from '../components/Child/Child';
 
 export const AuthContext = React.createContext();
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Child2 from './Child2';
+import Child2 from '../Child2/Child2';
 
 const child = (props) => {
   return (

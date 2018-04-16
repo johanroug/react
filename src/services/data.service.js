@@ -1,4 +1,4 @@
-import axiosCustom from '../../config/axios';
+import axiosCustom from '../config/axios';
 
 export const dataService = () => {
   return axiosCustom.get('/posts')

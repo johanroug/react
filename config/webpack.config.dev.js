@@ -193,7 +193,7 @@ module.exports = {
           },
           {
             test: /\.scss$/,
-            exclude: path.resolve('src/main.scss'),
+            exclude: path.resolve('src/styles/main.scss'),
             use: [
               require.resolve('style-loader'),
               {
@@ -209,7 +209,7 @@ module.exports = {
           },
           {
             test: /\.scss/,
-            include: path.resolve('src/main.scss'),
+            include: path.resolve('src/styles/main.scss'),
             use: ExtractTextPlugin.extract({
               fallback: 'style-loader',
               use: [

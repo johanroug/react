@@ -1,5 +1,5 @@
 import React from 'react';
-import {AuthContext} from '../containers/App';
+import {AuthContext} from '../../containers/App';
 import style from './Child2.scss';
 
 const child2 = (props) => {
