@@ -20,11 +20,11 @@ class TodoStore {
   }
 
   @action checked = (id) => {
-    for (let i = 0; i < this.todos.length; i++) {
-      if (this.todos[i].id === id) {
+    this.todos.forEach((todo, i) => {
+      if (todo.id === id) {
         this.todos[i].checked = !this.todos[i].checked;
       }
-    }
+    });
   }
 
   @computed get tellme () {
