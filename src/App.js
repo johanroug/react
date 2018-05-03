@@ -4,14 +4,14 @@ import { observer } from 'mobx-react';
 @observer
 class App extends Component {
   handleCreate = (e) => {
-    if (e.which === 13) {
-      this.props.store.createTodo(e.target.value);
-      e.target.value = '';
-    }
+    this.props.store.createTodo(e);
   }
 
   handleChecked = (id) => {
     this.props.store.toggleChecked(id);
+  }
+  handleDelete = (id) => {
+    this.props.store.delete(id);
   }
 
   handleFilter = (e) => {
@@ -26,7 +26,7 @@ class App extends Component {
         <li key={todo.id}>
           <input type='checkbox' checked={todo.checked} onChange={this.handleChecked.bind(this, todo.id)} />
           {todo.title}
-          {todo.id}
+          <button onClick={this.handleDelete.bind(this, todo.id)}>delete</button>
         </li>
       );
     });

@@ -13,8 +13,19 @@ class TodoStore {
     return this.todos.filter(todo => !this.filter || matchesFilter.test(todo.title));
   }
 
-  createTodo = (value) => {
-    this.todos.push(new Todo(value));
+  createTodo = (e) => {
+    if (e.which === 13) {
+      this.todos.push(new Todo(e.target.value));
+      e.target.value = '';
+    }
+  }
+
+  delete = (id) => {
+    this.todos.forEach((item, i) => {
+      if (item.id === id) {
+        this.todos.splice(i, 1);
+      }
+    });
   }
 
   toggleChecked = (id) => {
