@@ -17,6 +17,7 @@ class TodoStore {
     if (e.which === 13) {
       this.todos.push(new Todo(e.target.value));
       e.target.value = '';
+      console.log('ok');
     }
   }
 
