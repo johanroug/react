@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Burger.scss';
-import BurgerIngredient from './BurgerIngredients/BurgerIngrredients';
+import BurgerIngredient from '../BurgerIngredients/BurgerIngrredients';
 
 const burger = (props) => {
   let transformedIngredients = props.ingredients
