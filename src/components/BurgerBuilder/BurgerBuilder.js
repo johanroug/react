@@ -11,13 +11,13 @@ const INGREDIENT_PRICES = {
 };
 class BurgerBuilder extends Component {
   state = {
-    ingredients: [
-      'salad',
-      'bacon',
-      'cheese',
-      'bacon'
-    ],
-    totalPrice: 4
+    ingredients: [],
+    totalPrice: 4,
+    purchasable: false
+  }
+
+  updatePurchaseState = (itemsCount) => {
+    this.setState({purchasable: itemsCount > 0}); // return true or false
   }
 
   enabledControl = () => {
@@ -41,6 +41,8 @@ class BurgerBuilder extends Component {
       ingredients: updatedIngredients,
       totalPrice: totalPrice
     });
+
+    this.updatePurchaseState(updatedIngredients.length);
   }
 
   removeIngredientHandler = (type) => {
@@ -60,25 +62,29 @@ class BurgerBuilder extends Component {
         ingredients: updatedIngredients,
         totalPrice: totalPrice
       });
+
+      this.updatePurchaseState(updatedIngredients.length);
     }
   }
 
   render () {
-    const disabledInfo = this.state.ingredients.reduce((p, c) => {
-      if (p.indexOf(c) === -1) {
-        p.push(c);
-      }
+    const disabledInfo = this.state.ingredients
+      .reduce((p, c) => {
+        if (p.indexOf(c) === -1) { // if fx salad is not is array
+          p.push(c); // then create it
+        }
 
-      return p;
-    }, []);
+        return p;
+      }, []);
 
     return (
       <Aux>
-        {this.state.totalPrice}
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
+          totalPrice={this.state.totalPrice}
           add={this.addIngredientHandler}
           disabled={disabledInfo}
+          purchasable={this.state.purchasable}
           remove={this.removeIngredientHandler} />
       </Aux>
     );
