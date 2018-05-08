@@ -20,6 +20,16 @@ class BurgerBuilder extends Component {
     totalPrice: 4
   }
 
+  enabledControl = () => {
+    return this.state.ingredients.reduce((p, c) => {
+      if (p.indexOf(c) === -1) {
+        p.push(c);
+      }
+
+      return p;
+    }, []);
+  }
+
   addIngredientHandler = (type) => {
     const updatedIngredients = [...this.state.ingredients];
     updatedIngredients.push(type);
@@ -60,6 +70,7 @@ class BurgerBuilder extends Component {
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           add={this.addIngredientHandler}
+          disabled={this.enabledControl()}
           remove={this.removeIngredientHandler} />
       </Aux>
     );

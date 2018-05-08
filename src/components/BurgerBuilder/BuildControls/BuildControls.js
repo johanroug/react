@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import classes from './BuildControls.scss';
 import BuildControl from './BuildControl/BuildControl';
@@ -10,27 +10,30 @@ const controls = [
   {label: 'Meat', type: 'meat'}
 ];
 
-// const disabledHandler = (type) => {
-//   const disabledInfo = [...this.state.ingredients];
-//   disabledInfo.filter(value => {
-//     return value === controls.type;
-//   });
-// };
+class buildControls extends Component {
+  render () {
+    controls.map(item => {
+      if (this.props.disabled.indexOf(item.type)) {
+        item['disabled'] = false;
+      } else {
+        item['disabled'] = true;
+      }
+      return 'ok';
+    });
+    return (
+      <div className={classes.BuildControls}>
+        {controls.map((ctrl, index) => {
+          return (
+            <BuildControl
+              key={ctrl.label}
+              label={ctrl.label}
+              disabled={ctrl.disabled}
+              add={this.props.add.bind(this, ctrl.type)}
+              remove={this.props.remove.bind(this, ctrl.type)} />
+          );
+        })}
+      </div>);
+  }
+}
 
-const buildControls = (props) => (
-  <div className={classes.BuildControls}>
-    {controls.map((ctrl, index) => {
-      return (
-        <BuildControl
-          key={ctrl.label}
-          label={ctrl.label}
-          // disabled={disabledHandler.bind(this, ctrl.type)}
-          add={props.add.bind(this, ctrl.type)}
-          remove={props.remove.bind(this, ctrl.type)} />
-      );
-    })}
-  </div>
-);
-
-export default buildControls
-;
+export default buildControls;
