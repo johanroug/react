@@ -14,5 +14,13 @@
 
   nav {
     height: 100%;
+    display: none;
+    @media (min-width: 500px) {
+      display: block;
+    }
   } 
+}
+
+.Logo {
+  height: 80%;  
 }

@@ -1,0 +1,23 @@
+.Burger {
+  height: 17px;
+  width: 30px;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    display: block;
+    background: white;
+    height: 4px;
+    width: 30px;  
+    position: relative;
+    top: 50%;
+    margin-top: -2px;
+  }
+
+ @media (min-width: 500px) {
+   display: none;
+ }
+
+}
